@@ -10,8 +10,6 @@ In most MARL codebases the environment steps on the CPU while the networks run o
 
 Throughput measured with `scripts/benchmark.py` on an RTX 5070 Ti: [N] agent-steps per second at [M] parallel environments. These are agent-steps rather than environment-steps; with k agents per environment the two differ by a factor of k.
 
-[PLOT: steps per second against parallel environment count]
-
 ## Design
 
 The code is split into a substrate and games. The substrate provides 2D agent kinematics, collision, and lidar sensing. A game is five pure functions (`reset_fn`, `reward_fn`, `termination_fn`, `dynamics_modifier`, `observation_fn`) closing over their own config and state. Cooperative, competitive, and mixed-motive settings share the same physics and differ only in these functions.
