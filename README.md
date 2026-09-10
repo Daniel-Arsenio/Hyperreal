@@ -2,10 +2,9 @@
 
 A multi-agent reinforcement learning simulator written in JAX. The environment, the observation code, and the PPO training loop run on the GPU as one jit-compiled program, vectorised over parallel environment instances. I am building it as infrastructure for research on coordination and credit assignment in multi-agent systems.
 
-<img width="600" height="600" alt="tag_random" src="https://github.com/user-attachments/assets/fb554a52-c101-429b-b9ca-0529f0beeb41" />
+<img width="700" height="600" alt="3d_warehouse_random" src="https://github.com/user-attachments/assets/a3a5c1a6-818e-4cf4-8498-944b9925ffca" />
 
 ## Motivation
-
 In most MARL codebases the environment steps on the CPU while the networks run on the GPU, and data crosses that boundary every step. For small environments the transfer dominates the step time. Writing the environment in JAX removes the boundary: reset, step, observation, and the PPO update compile into a single program under `jax.jit`, and `jax.vmap` batches it over environment instances. The design follows PureJaxRL and JaxMARL.
 
 Throughput measured with `scripts/benchmark.py` on an RTX 5070 Ti: [N] agent-steps per second at [M] parallel environments. These are agent-steps rather than environment-steps; with k agents per environment the two differ by a factor of k.
