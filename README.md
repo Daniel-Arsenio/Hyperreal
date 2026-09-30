@@ -1,4 +1,4 @@
-# substrate
+# Hyperreal
 
 A multi-agent reinforcement learning simulator written in JAX. The environment, the observation code, and the PPO training loop run on the GPU as one jit-compiled program, vectorised over parallel environment instances. I am building it as infrastructure for research on coordination and credit assignment in multi-agent systems.
 
